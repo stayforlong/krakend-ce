@@ -65,9 +65,11 @@ require (
 	github.com/pelletier/go-toml v1.3.0 // indirect
 	github.com/sirupsen/logrus v1.3.0 // indirect
 	github.com/soheilhy/cmux v0.1.4 // indirect
+	github.com/sony/gobreaker v0.0.0-20170530031423-e9556a45379e // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.3.2 // indirect
+	github.com/stayforlong/krakend-statsd v0.1.0
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/tmthrgd/atomics v0.0.0-20180217065130-6910de195248 // indirect
 	github.com/tmthrgd/go-bitset v0.0.0-20180106085139-4d1be735fbfb // indirect
