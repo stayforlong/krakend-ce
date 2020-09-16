@@ -280,7 +280,7 @@ type MetricsAndTraces struct{}
 
 // Register registers the metrcis, influx and opencensus packages as required by the given configuration.
 func (MetricsAndTraces) Register(ctx context.Context, cfg config.ServiceConfig, l logging.Logger) *metrics.Metrics {
-	metricCollector, err := statsdmetrics.NewGinMetrics(cfg.ExtraConfig)
+	metricCollector, err := statsdmetrics.NewGinMetrics(ctx, cfg.ExtraConfig, l)
 	if err != nil {
 		l.Warning(err.Error())
 		metricCollector = metrics.New(ctx, cfg.ExtraConfig, l)
