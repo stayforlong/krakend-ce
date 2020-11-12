@@ -63,7 +63,6 @@ require (
 	github.com/pelletier/go-toml v1.3.0 // indirect
 	github.com/sirupsen/logrus v1.3.0 // indirect
 	github.com/soheilhy/cmux v0.1.4 // indirect
-	github.com/sony/gobreaker v0.0.0-20170530031423-e9556a45379e // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.3.2 // indirect
