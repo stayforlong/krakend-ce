@@ -802,6 +802,8 @@ github.com/spf13/viper v1.3.2/go.mod h1:ZiWeW+zYFKm7srdB9IoDzzZXaJaI5eL9QjNiN/DM
 github.com/src-d/gcfg v1.4.0/go.mod h1:p/UMsR43ujA89BJY9duynAwIpvqEujIH/jFlfL7jWoI=
 github.com/stayforlong/krakend-httpcache v0.1.0 h1:DPBj+AgywgEJUBo8nDqSSRH53IQG1B/ljiC2A15M83s=
 github.com/stayforlong/krakend-httpcache v0.1.0/go.mod h1:67+FiyxVT2gPj04tp9nVWzJf07yGowIl1HiBnV/fA8U=
+github.com/stayforlong/krakend-lua v1.1.11 h1:hXxjiXcVBZ6jmdpY6xwf8XKOOEQ6lwrCgg+DQYXpGH4=
+github.com/stayforlong/krakend-lua v1.1.11/go.mod h1:ul9YsSZsc6VB0l5HNdOD6AbP/olZV/WKhKDAwOI2yVI=
 github.com/stayforlong/krakend-statsd v0.2.0 h1:TJtSo/xJsn6ktUX0pniEw9NNa1izR1lOaF3vJZa9L+c=
 github.com/stayforlong/krakend-statsd v0.2.0/go.mod h1:4JN1OficLPvvHhOEda4HtggIZy1NDaQAiaRf8jhDsTg=
 github.com/stayforlong/krakend-statsd v0.3.0 h1:3sOlPDinIwdpyN6XS99ByAaWNM6JABDc957I/1I2QGY=

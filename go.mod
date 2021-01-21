@@ -30,7 +30,6 @@ require (
 	github.com/devopsfaith/krakend-jsonschema v0.0.0-20200611142303-11a34c8149c3
 	github.com/devopsfaith/krakend-lambda v0.0.0-20201005114349-3d7d5730c1fa
 	github.com/devopsfaith/krakend-logstash v0.0.0-20190131142205-17f4745d3502
-	github.com/devopsfaith/krakend-lua v1.1.2-0.20200909152058-1b4e6c9afb8f
 	github.com/devopsfaith/krakend-martian v0.0.0-20191207191841-92e3287c36d9
 	github.com/devopsfaith/krakend-metrics v1.1.0
 	github.com/devopsfaith/krakend-oauth2-clientcredentials v1.1.0
@@ -67,6 +66,7 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.3.2 // indirect
 	github.com/stayforlong/krakend-httpcache v0.1.0
+	github.com/stayforlong/krakend-lua v1.1.11
 	github.com/stayforlong/krakend-statsd v0.3.0
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/tmthrgd/atomics v0.0.0-20180217065130-6910de195248 // indirect

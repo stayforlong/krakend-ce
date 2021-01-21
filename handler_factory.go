@@ -4,12 +4,12 @@ import (
 	botdetector "github.com/devopsfaith/krakend-botdetector/gin"
 	"github.com/devopsfaith/krakend-jose"
 	ginjose "github.com/devopsfaith/krakend-jose/gin"
-	lua "github.com/devopsfaith/krakend-lua/router/gin"
 	metrics "github.com/devopsfaith/krakend-metrics/gin"
 	opencensus "github.com/devopsfaith/krakend-opencensus/router/gin"
 	juju "github.com/devopsfaith/krakend-ratelimit/juju/router/gin"
 	"github.com/devopsfaith/krakend/logging"
 	router "github.com/devopsfaith/krakend/router/gin"
+	lua "github.com/stayforlong/krakend-lua/router/gin"
 )
 
 // NewHandlerFactory returns a HandlerFactory with a rate-limit and a metrics collector middleware injected
