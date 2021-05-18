@@ -21,11 +21,10 @@ require (
 	github.com/devopsfaith/krakend-cobra v0.0.0-20200317174411-3518505e8cd2
 	github.com/devopsfaith/krakend-consul v0.0.0-20210209180917-00d2bff69730
 	github.com/devopsfaith/krakend-cors v0.0.0-20210126212640-09bb3851d085
-	github.com/devopsfaith/krakend-etcd v0.0.0-20190425091451-d989a26508d7
+	github.com/devopsfaith/krakend-etcd v0.0.0-20190425091451-d989a26508d7 // indirect
 	github.com/devopsfaith/krakend-flexibleconfig v0.0.0-20210222183249-754d3c696149
 	github.com/devopsfaith/krakend-gelf v0.0.0-20181019222239-59c0250b1c60
 	github.com/devopsfaith/krakend-gologging v0.0.0-20190131142345-f3f256584ecc
-	github.com/devopsfaith/krakend-httpcache v0.0.0-20181030153148-8474476ff874
 	github.com/devopsfaith/krakend-httpsecure v0.0.0-20191009151918-298638962e76
 	github.com/devopsfaith/krakend-jose v1.1.1-0.20210219175810-9b453c61a92e
 	github.com/devopsfaith/krakend-jsonschema v0.0.0-20200611142303-11a34c8149c3
@@ -61,6 +60,8 @@ require (
 	github.com/soheilhy/cmux v0.1.4 // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
+	github.com/stayforlong/krakend-httpcache v0.1.0
+	github.com/stayforlong/krakend-statsd v0.3.0
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/tmthrgd/atomics v0.0.0-20180217065130-6910de195248 // indirect
 	github.com/tmthrgd/go-bitset v0.0.0-20180106085139-4d1be735fbfb // indirect

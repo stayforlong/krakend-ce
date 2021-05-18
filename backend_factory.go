@@ -6,7 +6,6 @@ import (
 	amqp "github.com/devopsfaith/krakend-amqp"
 	cel "github.com/devopsfaith/krakend-cel"
 	cb "github.com/devopsfaith/krakend-circuitbreaker/gobreaker/proxy"
-	httpcache "github.com/devopsfaith/krakend-httpcache"
 	lambda "github.com/devopsfaith/krakend-lambda"
 	lua "github.com/devopsfaith/krakend-lua/proxy"
 	"github.com/devopsfaith/krakend-martian"
@@ -20,6 +19,7 @@ import (
 	"github.com/devopsfaith/krakend/proxy"
 	"github.com/devopsfaith/krakend/transport/http/client"
 	httprequestexecutor "github.com/devopsfaith/krakend/transport/http/client/plugin"
+	httpcache "github.com/stayforlong/krakend-httpcache"
 )
 
 // NewBackendFactory creates a BackendFactory by stacking all the available middlewares:
