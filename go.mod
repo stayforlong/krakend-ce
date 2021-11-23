@@ -19,7 +19,7 @@ require (
 	github.com/devopsfaith/krakend-cobra v1.4.0
 	github.com/devopsfaith/krakend-consul v1.4.0
 	github.com/devopsfaith/krakend-cors v1.4.0
-	github.com/devopsfaith/krakend-etcd v0.0.0-20190425091451-d989a26508d7
+	github.com/devopsfaith/krakend-etcd v0.0.0-20190425091451-d989a26508d7 // indirect
 	github.com/devopsfaith/krakend-flexibleconfig v1.4.0
 	github.com/devopsfaith/krakend-gelf v1.4.0
 	github.com/devopsfaith/krakend-gologging v1.4.0
@@ -58,6 +58,7 @@ require (
 	github.com/soheilhy/cmux v0.1.4 // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
+	github.com/stayforlong/krakend-statsd v1.4.0
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/tmthrgd/atomics v0.0.0-20180217065130-6910de195248 // indirect
 	github.com/tmthrgd/go-bitwise v0.0.0-20170218093117-01bef038b6bd // indirect
@@ -76,3 +77,5 @@ require (
 )
 
 replace github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79 => github.com/m4ns0ur/httpcache v0.0.0-20200426190423-1040e2e8823f
+
+replace github.com/devopsfaith/krakend-httpcache v1.4.0 => github.com/stayforlong/krakend-httpcache v1.4.0-sfl

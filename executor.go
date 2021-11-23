@@ -37,6 +37,7 @@ import (
 	krakendrouter "github.com/luraproject/lura/router"
 	router "github.com/luraproject/lura/router/gin"
 	server "github.com/luraproject/lura/transport/http/server/plugin"
+	statsdmetrics "github.com/stayforlong/krakend-statsd"
 )
 
 // NewExecutor returns an executor for the cmd package. The executor initalizes the entire gateway by
@@ -280,7 +281,11 @@ type MetricsAndTraces struct{}
 
 // Register registers the metrcis, influx and opencensus packages as required by the given configuration.
 func (MetricsAndTraces) Register(ctx context.Context, cfg config.ServiceConfig, l logging.Logger) *metrics.Metrics {
-	metricCollector := metrics.New(ctx, cfg.ExtraConfig, l)
+	metricCollector, err := statsdmetrics.NewGinMetrics(ctx, cfg.ExtraConfig, l)
+	if err != nil {
+		l.Warning(err.Error())
+		metricCollector = metrics.New(ctx, cfg.ExtraConfig, l)
+	}
 
 	if err := influxdb.New(ctx, cfg.ExtraConfig, metricCollector, l); err != nil {
 		l.Warning(err.Error())
