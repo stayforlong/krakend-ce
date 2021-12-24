@@ -5,9 +5,9 @@ import (
 	jsonschema "github.com/devopsfaith/krakend-jsonschema"
 	lua "github.com/devopsfaith/krakend-lua/proxy"
 	metrics "github.com/devopsfaith/krakend-metrics/gin"
-	opencensus "github.com/devopsfaith/krakend-opencensus"
 	"github.com/luraproject/lura/logging"
 	"github.com/luraproject/lura/proxy"
+	ddtrace "github.com/stayforlong/krakend-ddtrace"
 )
 
 // NewProxyFactory returns a new ProxyFactory wrapping the injected BackendFactory with the default proxy stack and a metrics collector
@@ -18,7 +18,7 @@ func NewProxyFactory(logger logging.Logger, backendFactory proxy.BackendFactory,
 	proxyFactory = cel.ProxyFactory(logger, proxyFactory)
 	proxyFactory = lua.ProxyFactory(logger, proxyFactory)
 	proxyFactory = metricCollector.ProxyFactory("pipe", proxyFactory)
-	proxyFactory = opencensus.ProxyFactory(proxyFactory)
+	proxyFactory = ddtrace.ProxyFactory(proxyFactory)
 	return proxyFactory
 }
 

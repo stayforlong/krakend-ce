@@ -18,16 +18,6 @@ import (
 	jose "github.com/devopsfaith/krakend-jose"
 	logstash "github.com/devopsfaith/krakend-logstash"
 	metrics "github.com/devopsfaith/krakend-metrics/gin"
-	opencensus "github.com/devopsfaith/krakend-opencensus"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/datadog"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/influxdb"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/jaeger"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/ocagent"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/prometheus"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/stackdriver"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/xray"
-	_ "github.com/devopsfaith/krakend-opencensus/exporter/zipkin"
-	pubsub "github.com/devopsfaith/krakend-pubsub"
 	"github.com/devopsfaith/krakend-usage/client"
 	"github.com/gin-gonic/gin"
 	"github.com/go-contrib/uuid"
@@ -37,6 +27,7 @@ import (
 	krakendrouter "github.com/luraproject/lura/router"
 	router "github.com/luraproject/lura/router/gin"
 	server "github.com/luraproject/lura/transport/http/server/plugin"
+	ddtrace "github.com/stayforlong/krakend-ddtrace"
 	statsdmetrics "github.com/stayforlong/krakend-statsd"
 )
 
@@ -143,6 +134,7 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 		}
 
 		metricCollector := e.MetricsAndTracesRegister.Register(ctx, cfg, logger)
+		e.registerDatadogTrace(cfg, logger)
 
 		tokenRejecterFactory, err := e.TokenRejecterFactory.NewTokenRejecter(
 			ctx,
@@ -203,6 +195,16 @@ func (e *ExecutorBuilder) checkCollaborators() {
 	}
 	if e.RunServerFactory == nil {
 		e.RunServerFactory = new(DefaultRunServerFactory)
+	}
+}
+
+func (e *ExecutorBuilder) registerDatadogTrace(cfg config.ServiceConfig, l logging.Logger) {
+	ginMiddleware, err := ddtrace.Register(cfg)
+	if err != nil {
+		l.Warning(err.Error())
+	}
+	if ginMiddleware != nil {
+		e.Middlewares = append(e.Middlewares, ginMiddleware)
 	}
 }
 
@@ -289,10 +291,6 @@ func (MetricsAndTraces) Register(ctx context.Context, cfg config.ServiceConfig, 
 
 	if err := influxdb.New(ctx, cfg.ExtraConfig, metricCollector, l); err != nil {
 		l.Warning(err.Error())
-	}
-
-	if err := opencensus.Register(ctx, cfg, append(opencensus.DefaultViews, pubsub.OpenCensusViews...)...); err != nil {
-		l.Warning("opencensus:", err.Error())
 	}
 
 	return metricCollector

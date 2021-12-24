@@ -12,7 +12,6 @@ import (
 	martian "github.com/devopsfaith/krakend-martian"
 	metrics "github.com/devopsfaith/krakend-metrics/gin"
 	oauth2client "github.com/devopsfaith/krakend-oauth2-clientcredentials"
-	opencensus "github.com/devopsfaith/krakend-opencensus"
 	pubsub "github.com/devopsfaith/krakend-pubsub"
 	juju "github.com/devopsfaith/krakend-ratelimit/juju/proxy"
 	"github.com/luraproject/lura/config"
@@ -20,6 +19,7 @@ import (
 	"github.com/luraproject/lura/proxy"
 	"github.com/luraproject/lura/transport/http/client"
 	httprequestexecutor "github.com/luraproject/lura/transport/http/client/plugin"
+	ddtrace "github.com/stayforlong/krakend-ddtrace"
 )
 
 // NewBackendFactory creates a BackendFactory by stacking all the available middlewares:
@@ -47,7 +47,7 @@ func NewBackendFactoryWithContext(ctx context.Context, logger logging.Logger, me
 		} else {
 			clientFactory = httpcache.NewHTTPClient(cfg)
 		}
-		return opencensus.HTTPRequestExecutorFromConfig(clientFactory, cfg)
+		return ddtrace.HTTPRequestExecutor(clientFactory)
 	}
 	requestExecutorFactory = httprequestexecutor.HTTPRequestExecutor(logger, requestExecutorFactory)
 	backendFactory := martian.NewConfiguredBackendFactory(logger, requestExecutorFactory)
@@ -60,7 +60,7 @@ func NewBackendFactoryWithContext(ctx context.Context, logger logging.Logger, me
 	backendFactory = juju.BackendFactory(backendFactory)
 	backendFactory = cb.BackendFactory(backendFactory, logger)
 	backendFactory = metricCollector.BackendFactory("backend", backendFactory)
-	backendFactory = opencensus.BackendFactory(backendFactory)
+	backendFactory = ddtrace.BackendFactory(backendFactory)
 	return backendFactory
 }
 
