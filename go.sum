@@ -1447,6 +1447,8 @@ github.com/stayforlong/krakend-statsd v0.3.0 h1:3sOlPDinIwdpyN6XS99ByAaWNM6JABDc
 github.com/stayforlong/krakend-statsd v0.3.0/go.mod h1:4JN1OficLPvvHhOEda4HtggIZy1NDaQAiaRf8jhDsTg=
 github.com/stayforlong/krakend-statsd v1.4.0 h1:yBUdhcTNJ9W2PefwHuckhzOpSw+RO9pZh/t9kj4Z3GU=
 github.com/stayforlong/krakend-statsd v1.4.0/go.mod h1:fpHbTm40s3vr1EgiYQ9Cik1YgmIfZitdglx6drm7Y0g=
+github.com/stayforlong/krakend-statsd v1.5.0 h1:7cU8JBy2tbyda3cPH0Jlp7hmwLiKBg+X1VPSBbbcH9M=
+github.com/stayforlong/krakend-statsd v1.5.0/go.mod h1:fpHbTm40s3vr1EgiYQ9Cik1YgmIfZitdglx6drm7Y0g=
 github.com/stevvooe/resumable v0.0.0-20180830230917-22b14a53ba50/go.mod h1:1pdIZTAHUz+HDKDVZ++5xg/duPlhKAIzw9qy42CWYp4=
 github.com/streadway/amqp v0.0.0-20190312223743-14f78b41ce6d/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
