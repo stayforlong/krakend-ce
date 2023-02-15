@@ -13,7 +13,6 @@ import (
 	martian "github.com/krakendio/krakend-martian/v2"
 	metrics "github.com/krakendio/krakend-metrics/v2/gin"
 	oauth2client "github.com/krakendio/krakend-oauth2-clientcredentials/v2"
-	opencensus "github.com/krakendio/krakend-opencensus/v2"
 	pubsub "github.com/krakendio/krakend-pubsub/v2"
 	juju "github.com/krakendio/krakend-ratelimit/v2/juju/proxy"
 	"github.com/luraproject/lura/v2/config"
@@ -21,6 +20,7 @@ import (
 	"github.com/luraproject/lura/v2/proxy"
 	"github.com/luraproject/lura/v2/transport/http/client"
 	httprequestexecutor "github.com/luraproject/lura/v2/transport/http/client/plugin"
+	ddtrace "github.com/stayforlong/krakend-ddtrace/v2"
 )
 
 // NewBackendFactory creates a BackendFactory by stacking all the available middlewares:
@@ -48,7 +48,7 @@ func NewBackendFactoryWithContext(ctx context.Context, logger logging.Logger, me
 		} else {
 			clientFactory = httpcache.NewHTTPClient(cfg, clientFactory)
 		}
-		return opencensus.HTTPRequestExecutorFromConfig(clientFactory, cfg)
+		return ddtrace.HTTPRequestExecutor(clientFactory)
 	}
 	requestExecutorFactory = httprequestexecutor.HTTPRequestExecutor(logger, requestExecutorFactory)
 	backendFactory := martian.NewConfiguredBackendFactory(logger, requestExecutorFactory)
@@ -61,7 +61,7 @@ func NewBackendFactoryWithContext(ctx context.Context, logger logging.Logger, me
 	backendFactory = juju.BackendFactory(logger, backendFactory)
 	backendFactory = cb.BackendFactory(backendFactory, logger)
 	backendFactory = metricCollector.BackendFactory("backend", backendFactory)
-	backendFactory = opencensus.BackendFactory(backendFactory)
+	backendFactory = ddtrace.BackendFactory(backendFactory)
 
 	return func(remote *config.Backend) proxy.Proxy {
 		logger.Debug(fmt.Sprintf("[BACKEND: %s] Building the backend pipe", remote.URLPattern))
