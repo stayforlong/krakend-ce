@@ -2544,6 +2544,8 @@ github.com/stayforlong/krakend-ddtrace/v2 v2.0.1 h1:g0tN4jIloC2U0MmRb5hdReiR7TMI
 github.com/stayforlong/krakend-ddtrace/v2 v2.0.1/go.mod h1:x0nXDKRXIl0LfwFxE8aa1Bf33v9ZQV8xAMAaDCztMPg=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20230215110142-4f47c9ac9dbc h1:grFNxD/lRuzqGletn+vLI2hI73yI9NqGpJj4qrC+LWM=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20230215110142-4f47c9ac9dbc/go.mod h1:q89KM0VGr22P+RR5AWkUafNqorxIl7AcvlgRKPgVZ1I=
+github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240123135653-c0565b1d5fae h1:mpbqH8lkGyveYbEXWOI87+lku0tj1yc3EHWr6HQnjxw=
+github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240123135653-c0565b1d5fae/go.mod h1:ulhzh9VHw+SNrosLI/GeYLhNJU02vmYP0oZeKfnmlrw=
 github.com/stayforlong/krakend-statsd/v2 v2.0.1 h1:P/FiGa+wTLiVzpsXJOMovF2UPrf79i7S9W5ghSQ7uj8=
 github.com/stayforlong/krakend-statsd/v2 v2.0.1/go.mod h1:AbQtkM9x/UQnSRvDFodN3YOhX8p4iWiFjI4jYUxks4c=
 github.com/stefanberger/go-pkcs11uri v0.0.0-20201008174630-78d3cae3a980/go.mod h1:AO3tvPzVZ/ayst6UlUKUv6rcPQInYe3IknH3jYhAKu8=
