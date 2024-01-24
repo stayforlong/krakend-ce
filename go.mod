@@ -253,4 +253,6 @@ require (
 
 replace github.com/auth0-community/go-auth0 v1.0.0 => github.com/devopsfaith/go-auth0 v0.0.0-20220422124632-a1358a81b559
 
-replace github.com/krakendio/krakend-httpcache/v2 v2.0.3 => github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240123135653-c0565b1d5fae
+replace github.com/krakendio/httpcache v0.0.0-20221129153752-65a87a5c2bc5 => github.com/stayforlong/httpcache v0.0.0-20240124132931-b6729276e6da
+
+replace github.com/krakendio/krakend-httpcache/v2 v2.0.3 => github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240124135430-3c72b8e1a992

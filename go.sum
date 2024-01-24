@@ -2540,12 +2540,16 @@ github.com/spf13/viper v1.4.0/go.mod h1:PTJ7Z/lr49W6bUbkmS1V3by4uWynFiR9p7+dSq/y
 github.com/spf13/viper v1.7.0/go.mod h1:8WkrPz2fc9jxqZNCJI/76HCieCp4Q8HaLFoCha5qpdg=
 github.com/spf13/viper v1.7.1 h1:pM5oEahlgWv/WnHXpgbKz7iLIxRf65tye2Ci+XFK5sk=
 github.com/spf13/viper v1.7.1/go.mod h1:8WkrPz2fc9jxqZNCJI/76HCieCp4Q8HaLFoCha5qpdg=
+github.com/stayforlong/httpcache v0.0.0-20240124132931-b6729276e6da h1:c3mKLxab5mFEk8tzvvYqtwCuLupbYKqk3tw4Wd8wJ2g=
+github.com/stayforlong/httpcache v0.0.0-20240124132931-b6729276e6da/go.mod h1:VWTP3MZHr/W9OauBMrOQ2bD1rIjDetAQo5JbXCezYKE=
 github.com/stayforlong/krakend-ddtrace/v2 v2.0.1 h1:g0tN4jIloC2U0MmRb5hdReiR7TMInzYgWasDcslsJSg=
 github.com/stayforlong/krakend-ddtrace/v2 v2.0.1/go.mod h1:x0nXDKRXIl0LfwFxE8aa1Bf33v9ZQV8xAMAaDCztMPg=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20230215110142-4f47c9ac9dbc h1:grFNxD/lRuzqGletn+vLI2hI73yI9NqGpJj4qrC+LWM=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20230215110142-4f47c9ac9dbc/go.mod h1:q89KM0VGr22P+RR5AWkUafNqorxIl7AcvlgRKPgVZ1I=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240123135653-c0565b1d5fae h1:mpbqH8lkGyveYbEXWOI87+lku0tj1yc3EHWr6HQnjxw=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240123135653-c0565b1d5fae/go.mod h1:ulhzh9VHw+SNrosLI/GeYLhNJU02vmYP0oZeKfnmlrw=
+github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240124135430-3c72b8e1a992 h1:6MAnQ9y4NoOE6/yoIJZqj/FhZrs9+CmRmCFQVllkd30=
+github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240124135430-3c72b8e1a992/go.mod h1:qVxMmhJWJ1k0wVm6te7+9v54/tMokJseCQMyg+1nMMI=
 github.com/stayforlong/krakend-statsd/v2 v2.0.1 h1:P/FiGa+wTLiVzpsXJOMovF2UPrf79i7S9W5ghSQ7uj8=
 github.com/stayforlong/krakend-statsd/v2 v2.0.1/go.mod h1:AbQtkM9x/UQnSRvDFodN3YOhX8p4iWiFjI4jYUxks4c=
 github.com/stefanberger/go-pkcs11uri v0.0.0-20201008174630-78d3cae3a980/go.mod h1:AO3tvPzVZ/ayst6UlUKUv6rcPQInYe3IknH3jYhAKu8=
