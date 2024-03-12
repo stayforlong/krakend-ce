@@ -14,7 +14,6 @@ import (
 	martian "github.com/krakendio/krakend-martian/v2"
 	metrics "github.com/krakendio/krakend-metrics/v2/gin"
 	oauth2client "github.com/krakendio/krakend-oauth2-clientcredentials/v2"
-	opencensus "github.com/krakendio/krakend-opencensus/v2"
 	pubsub "github.com/krakendio/krakend-pubsub/v2"
 	ratelimit "github.com/krakendio/krakend-ratelimit/v3/proxy"
 	"github.com/luraproject/lura/v2/config"
@@ -22,6 +21,7 @@ import (
 	"github.com/luraproject/lura/v2/proxy"
 	"github.com/luraproject/lura/v2/transport/http/client"
 	httprequestexecutor "github.com/luraproject/lura/v2/transport/http/client/plugin"
+	ddtrace "github.com/stayforlong/krakend-ddtrace/v2"
 )
 
 // NewBackendFactory creates a BackendFactory by stacking all the available middlewares:
@@ -51,7 +51,7 @@ func newRequestExecutorFactory(logger logging.Logger) func(*config.Backend) clie
 
 		clientFactory = otellura.InstrumentedHTTPClientFactory(clientFactory, cfg)
 		// TODO: check what happens if we have both, opencensus and otel enabled ?
-		return opencensus.HTTPRequestExecutorFromConfig(clientFactory, cfg)
+		return ddtrace.HTTPRequestExecutor(clientFactory)
 	}
 	return httprequestexecutor.HTTPRequestExecutor(logger, requestExecutorFactory)
 }
@@ -69,7 +69,7 @@ func internalNewBackendFactory(ctx context.Context, requestExecutorFactory func(
 	backendFactory = ratelimit.BackendFactory(logger, backendFactory)
 	backendFactory = cb.BackendFactory(backendFactory, logger)
 	backendFactory = metricCollector.BackendFactory("backend", backendFactory)
-	backendFactory = opencensus.BackendFactory(backendFactory)
+	backendFactory = ddtrace.BackendFactory(backendFactory)
 	backendFactory = otellura.BackendFactory(backendFactory)
 	return func(remote *config.Backend) proxy.Proxy {
 		logger.Debug(fmt.Sprintf("[BACKEND: %s] Building the backend pipe", remote.URLPattern))
