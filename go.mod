@@ -37,7 +37,9 @@ require (
 	github.com/krakendio/krakend-xml/v2 v2.1.0
 	github.com/luraproject/lura/v2 v2.6.3
 	github.com/spf13/cobra v1.8.0
+	github.com/stayforlong/krakend-auth v1.2.0
 	github.com/stayforlong/krakend-ddtrace/v2 v2.0.2
+	github.com/stayforlong/krakend-ipfilter v1.1.0
 	github.com/stayforlong/krakend-statsd/v2 v2.0.2
 	github.com/xeipuuv/gojsonschema v1.2.1-0.20200424115421-065759f9c3d7
 	golang.org/x/sync v0.7.0

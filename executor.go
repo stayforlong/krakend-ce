@@ -36,6 +36,7 @@ import (
 	router "github.com/luraproject/lura/v2/router/gin"
 	serverhttp "github.com/luraproject/lura/v2/transport/http/server"
 	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	auth "github.com/stayforlong/krakend-auth"
 	ddtrace "github.com/stayforlong/krakend-ddtrace/v2"
 	statsdmetrics "github.com/stayforlong/krakend-statsd/v2"
 )
@@ -95,7 +96,7 @@ type BackendFactory interface {
 
 // HandlerFactory returns a KrakenD router handler factory, ready to be passed to the KrakenD RouterFactory
 type HandlerFactory interface {
-	NewHandlerFactory(logging.Logger, *metrics.Metrics, jose.RejecterFactory) router.HandlerFactory
+	NewHandlerFactory(logging.Logger, *metrics.Metrics, jose.RejecterFactory, auth.Authenticator) router.HandlerFactory
 }
 
 // LoggerFactory returns a KrakenD Logger factory, ready to be passed to the KrakenD RouterFactory
@@ -193,7 +194,12 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 
 		agentPing := make(chan string, len(cfg.AsyncAgents))
 
-		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory)
+		authenticator, err := auth.NewAuthenticator(cfg, logger)
+		if err != nil {
+			logger.Error("[SERVICE: auth]", err.Error())
+		}
+
+		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory, authenticator)
 		handlerF = otelgin.New(handlerF)
 
 		runServerChain := serverhttp.RunServerWithLoggerFactory(logger)

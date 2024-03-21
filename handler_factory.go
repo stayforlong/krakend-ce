@@ -3,6 +3,7 @@ package krakend
 import (
 	"fmt"
 
+	"github.com/gin-gonic/gin"
 	botdetector "github.com/krakendio/krakend-botdetector/v2/gin"
 	jose "github.com/krakendio/krakend-jose/v2"
 	ginjose "github.com/krakendio/krakend-jose/v2/gin"
@@ -13,16 +14,18 @@ import (
 	"github.com/luraproject/lura/v2/logging"
 	"github.com/luraproject/lura/v2/proxy"
 	router "github.com/luraproject/lura/v2/router/gin"
-
-	"github.com/gin-gonic/gin"
+	auth "github.com/stayforlong/krakend-auth"
+	ipfilter "github.com/stayforlong/krakend-ipfilter"
 )
 
 // NewHandlerFactory returns a HandlerFactory with a rate-limit and a metrics collector middleware injected
-func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, rejecter jose.RejecterFactory) router.HandlerFactory {
+func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, rejecter jose.RejecterFactory, a auth.Authenticator) router.HandlerFactory {
 	handlerFactory := router.CustomErrorEndpointHandler(logger, ErrorToHTTPError)
 	handlerFactory = ratelimit.NewRateLimiterMw(logger, handlerFactory)
 	handlerFactory = lua.HandlerFactory(logger, handlerFactory)
 	handlerFactory = ginjose.HandlerFactory(handlerFactory, logger, rejecter)
+	handlerFactory = a.NewHandlerFactory(handlerFactory, logger)
+	handlerFactory = ipfilter.NewHandlerFactory(handlerFactory, logger)
 	handlerFactory = metricCollector.NewHTTPHandlerFactory(handlerFactory)
 	handlerFactory = botdetector.New(handlerFactory, logger)
 
@@ -34,6 +37,6 @@ func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, 
 
 type handlerFactory struct{}
 
-func (handlerFactory) NewHandlerFactory(l logging.Logger, m *metrics.Metrics, r jose.RejecterFactory) router.HandlerFactory {
-	return NewHandlerFactory(l, m, r)
+func (handlerFactory) NewHandlerFactory(l logging.Logger, m *metrics.Metrics, r jose.RejecterFactory, a auth.Authenticator) router.HandlerFactory {
+	return NewHandlerFactory(l, m, r, a)
 }

@@ -1003,10 +1003,14 @@ github.com/stayforlong/go-chassis/v2 v2.244.0 h1:rZ/7rRjJRth8nue6Z5C4brP83iZQLhs
 github.com/stayforlong/go-chassis/v2 v2.244.0/go.mod h1:rjhy6uetuwdXLR27W1gCxc/N5GnEA2qCu1D4n8GO2wo=
 github.com/stayforlong/httpcache v0.0.0-20240312074927-dd17ed9e2f6b h1:x/22guUD0VeiyU0C/yqF4UH8FCOkUDPfGu4NdDZXjfc=
 github.com/stayforlong/httpcache v0.0.0-20240312074927-dd17ed9e2f6b/go.mod h1:Ur1xK67uBDsaHJsHDrdhbZCt+kH18A8aTKJgcD4MeFs=
+github.com/stayforlong/krakend-auth v1.2.0 h1:PYPZ6Jj0boFoJoKAC7/Ud+m6MBZ6T4LyA9UuVK1rhqk=
+github.com/stayforlong/krakend-auth v1.2.0/go.mod h1:9hBMHpn8QBP1rnlm19CezW7kAN6cPLoAgpV3/n1b53Q=
 github.com/stayforlong/krakend-ddtrace/v2 v2.0.2 h1:UhHHijUAth2exey0RJeY4e/HpzcqbNLlWROiO0Bj1Z4=
 github.com/stayforlong/krakend-ddtrace/v2 v2.0.2/go.mod h1:IuEye9II0/PsNO65vn0ow1BMx1Iuu0YpIVwAvlO9f00=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240312075746-74046f3f65a7 h1:XnK1EWp9hdBJ0PgxEjQnMxevnz2rh32Jyc6ODGEXXEE=
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240312075746-74046f3f65a7/go.mod h1:TxNzNIKa+tDbTx+Zh9wkSNg9jOWS6MzKHr1r2G82AsY=
+github.com/stayforlong/krakend-ipfilter v1.1.0 h1:BqtJ0XExvO4NfrhYJglyGFNd02u0tERqKfbUEST43ps=
+github.com/stayforlong/krakend-ipfilter v1.1.0/go.mod h1:hAd7gLAg/5xYeJxf9EyI4bgvuC1vR2vBcYol705c/Tc=
 github.com/stayforlong/krakend-statsd/v2 v2.0.2 h1:oVy9ywEt4jYq/KvaPZW49E+1xO0yoWSZ6h+InNosr+Y=
 github.com/stayforlong/krakend-statsd/v2 v2.0.2/go.mod h1:v/+THd/4HRZvN1SIXBaVq9SPhY8hkTR6/7Ec6nSVKYo=
 github.com/stbenjam/no-sprintf-host-port v0.1.1 h1:tYugd/yrm1O0dV+ThCbaKZh195Dfm07ysF0U6JQXczc=
