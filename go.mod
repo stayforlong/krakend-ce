@@ -434,3 +434,5 @@ require (
 replace github.com/krakendio/httpcache v0.0.0-20221129153752-65a87a5c2bc5 => github.com/stayforlong/httpcache v0.0.0-20240312074927-dd17ed9e2f6b
 
 replace github.com/krakendio/krakend-httpcache/v2 v2.0.3 => github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240312075746-74046f3f65a7
+
+replace github.com/yuin/gopher-lua v1.1.1 => github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583
