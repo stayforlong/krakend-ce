@@ -2,8 +2,6 @@ module github.com/krakendio/krakend-ce/v2
 
 go 1.22
 
-replace github.com/luraproject/lura/v2 v2.6.2 => github.com/stayforlong/lura/v2 v2.6.3-0.20240411105503-bdbd75c3df7a
-
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-contrib/uuid v1.2.0
@@ -436,3 +434,5 @@ replace github.com/krakendio/httpcache v0.0.0-20221129153752-65a87a5c2bc5 => git
 replace github.com/krakendio/krakend-httpcache/v2 v2.0.3 => github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240312075746-74046f3f65a7
 
 replace github.com/yuin/gopher-lua v1.1.1 => github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583
+
+replace github.com/luraproject/lura/v2 v2.6.2 => github.com/stayforlong/lura/v2 v2.6.3-0.20240411105503-bdbd75c3df7a
