@@ -960,8 +960,8 @@ github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240709134059-fe6f058063b4
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240709134059-fe6f058063b4/go.mod h1:rNlekFnpmLXDHMlz1Li35VFwd3rQVSJ/E9NOm+9sfr4=
 github.com/stayforlong/krakend-ipfilter v1.1.0 h1:BqtJ0XExvO4NfrhYJglyGFNd02u0tERqKfbUEST43ps=
 github.com/stayforlong/krakend-ipfilter v1.1.0/go.mod h1:hAd7gLAg/5xYeJxf9EyI4bgvuC1vR2vBcYol705c/Tc=
-github.com/stayforlong/krakend-statsd/v2 v2.0.2 h1:oVy9ywEt4jYq/KvaPZW49E+1xO0yoWSZ6h+InNosr+Y=
-github.com/stayforlong/krakend-statsd/v2 v2.0.2/go.mod h1:v/+THd/4HRZvN1SIXBaVq9SPhY8hkTR6/7Ec6nSVKYo=
+github.com/stayforlong/krakend-statsd/v2 v2.0.4 h1:l9fEuyGMAcLr0rwQ8QsXgDie9GU4RvE7jpYM331PUEc=
+github.com/stayforlong/krakend-statsd/v2 v2.0.4/go.mod h1:v/+THd/4HRZvN1SIXBaVq9SPhY8hkTR6/7Ec6nSVKYo=
 github.com/stbenjam/no-sprintf-host-port v0.1.1 h1:tYugd/yrm1O0dV+ThCbaKZh195Dfm07ysF0U6JQXczc=
 github.com/stbenjam/no-sprintf-host-port v0.1.1/go.mod h1:TLhvtIvONRzdmkFiio4O8LHsN9N74I+PhRquPsxpL0I=
 github.com/stoewer/go-strcase v1.2.0 h1:Z2iHWqGXH00XYgqDmNgQbIBxf3wrNq0F3feEy0ainaU=
