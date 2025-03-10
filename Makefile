@@ -56,7 +56,7 @@ all: test
 build:
 	@echo "Building the binary..."
 	@go get .
-	@go build -ldflags="-X github.com/luraproject/lura/v2/core.KrakendVersion=${VERSION} \
+	@GOARCH=amd64 go build -ldflags="-X github.com/luraproject/lura/v2/core.KrakendVersion=${VERSION} \
 	-X github.com/luraproject/lura/v2/core.GoVersion=${GOLANG_VERSION} \
 	-X github.com/luraproject/lura/v2/core.GlibcVersion=${GLIBC_VERSION} ${EXTRA_LDFLAGS}" \
 	-o ./bin/x86_64/${BIN_NAME} ./cmd/krakend-ce
