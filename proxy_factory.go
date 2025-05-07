@@ -2,6 +2,7 @@ package krakend
 
 import (
 	"fmt"
+	"slices"
 
 	otellura "github.com/krakend/krakend-otel/lura"
 	cel "github.com/krakendio/krakend-cel/v2"
@@ -34,6 +35,9 @@ func NewProxyFactory(logger logging.Logger, backendFactory proxy.BackendFactory,
 
 	return proxy.FactoryFunc(func(cfg *config.EndpointConfig) (proxy.Proxy, error) {
 		logger.Debug(fmt.Sprintf("[ENDPOINT: %s] Building the proxy pipe", cfg.Endpoint))
+		if !slices.Contains(cfg.HeadersToPass, "Content-Type") {
+			cfg.HeadersToPass = append(cfg.HeadersToPass, "Content-Type")
+		}
 		return proxyFactory.New(cfg)
 	})
 }
