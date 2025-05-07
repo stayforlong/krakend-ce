@@ -36,7 +36,7 @@ func NewProxyFactory(logger logging.Logger, backendFactory proxy.BackendFactory,
 	return proxy.FactoryFunc(func(cfg *config.EndpointConfig) (proxy.Proxy, error) {
 		logger.Debug(fmt.Sprintf("[ENDPOINT: %s] Building the proxy pipe", cfg.Endpoint))
 		if !slices.Contains(cfg.HeadersToPass, "Content-Type") {
-			cfg.HeadersToPass = append(cfg.HeadersToPass, "content-type")
+			cfg.HeadersToPass = append(cfg.HeadersToPass, "Content-Type")
 		}
 		return proxyFactory.New(cfg)
 	})
