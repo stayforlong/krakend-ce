@@ -42,7 +42,7 @@ require (
 	github.com/stayforlong/krakend-auth v1.7.0
 	github.com/stayforlong/krakend-ddtrace/v2 v2.0.2
 	github.com/stayforlong/krakend-ipfilter v1.1.0
-	github.com/stayforlong/krakend-statsd/v2 v2.0.4
+	github.com/stayforlong/krakend-statsd/v2 v2.0.5
 	github.com/xeipuuv/gojsonschema v1.2.1-0.20200424115421-065759f9c3d7
 	golang.org/x/sync v0.9.0
 )
@@ -77,8 +77,7 @@ require (
 	github.com/DataDog/appsec-internal-go v1.6.0 // indirect
 	github.com/DataDog/datadog-agent/pkg/obfuscate v0.48.0 // indirect
 	github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.1 // indirect
-	github.com/DataDog/datadog-go v4.8.3+incompatible // indirect
-	github.com/DataDog/datadog-go/v5 v5.5.0 // indirect
+	github.com/DataDog/datadog-go/v5 v5.6.0 // indirect
 	github.com/DataDog/go-libddwaf/v3 v3.2.1 // indirect
 	github.com/DataDog/go-tuf v1.0.2-0.5.2 // indirect
 	github.com/DataDog/gostackparse v0.7.0 // indirect
@@ -342,7 +341,7 @@ require (
 	github.com/spf13/viper v1.12.0 // indirect
 	github.com/ssgreg/nlreturn/v2 v2.2.1 // indirect
 	github.com/stayforlong/go-chassis/v2 v2.244.0 // indirect
-	github.com/stayforlong/go-chassis/v3 v3.310.1 // indirect
+	github.com/stayforlong/go-chassis/v3 v3.310.2 // indirect
 	github.com/stbenjam/no-sprintf-host-port v0.1.1 // indirect
 	github.com/stoewer/go-strcase v1.2.0 // indirect
 	github.com/streadway/amqp v1.1.0 // indirect

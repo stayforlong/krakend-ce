@@ -66,10 +66,8 @@ github.com/DataDog/datadog-agent/pkg/obfuscate v0.48.0 h1:bUMSNsw1iofWiju9yc1f+k
 github.com/DataDog/datadog-agent/pkg/obfuscate v0.48.0/go.mod h1:HzySONXnAgSmIQfL6gOv9hWprKJkx8CicuXuUbmgWfo=
 github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.1 h1:5nE6N3JSs2IG3xzMthNFhXfOaXlrsdgqmJ73lndFf8c=
 github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.1/go.mod h1:Vc+snp0Bey4MrrJyiV2tVxxJb6BmLomPvN1RgAvjGaQ=
-github.com/DataDog/datadog-go v4.8.3+incompatible h1:fNGaYSuObuQb5nzeTQqowRAd9bpDIRRV4/gUtIBjh8Q=
-github.com/DataDog/datadog-go v4.8.3+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
-github.com/DataDog/datadog-go/v5 v5.5.0 h1:G5KHeB8pWBNXT4Jtw0zAkhdxEAWSpWH00geHI6LDrKU=
-github.com/DataDog/datadog-go/v5 v5.5.0/go.mod h1:K9kcYBlxkcPP8tvvjZZKs/m1edNAUFzBbdpTUKfCsuw=
+github.com/DataDog/datadog-go/v5 v5.6.0 h1:2oCLxjF/4htd55piM75baflj/KoE6VYS7alEUqFvRDw=
+github.com/DataDog/datadog-go/v5 v5.6.0/go.mod h1:K9kcYBlxkcPP8tvvjZZKs/m1edNAUFzBbdpTUKfCsuw=
 github.com/DataDog/go-libddwaf/v3 v3.2.1 h1:lZPc6UxCOwioHc++nsldKR50FpIrRh1uGnGLuryqnE8=
 github.com/DataDog/go-libddwaf/v3 v3.2.1/go.mod h1:AP+7Atb8ftSsrha35wht7+K3R+xuzfVSQhabSO4w6CY=
 github.com/DataDog/go-tuf v1.0.2-0.5.2 h1:EeZr937eKAWPxJ26IykAdWA4A0jQXJgkhUjqEI/w7+I=
@@ -840,8 +838,8 @@ github.com/ssgreg/nlreturn/v2 v2.2.1 h1:X4XDI7jstt3ySqGU86YGAURbxw3oTDPK9sPEi6YE
 github.com/ssgreg/nlreturn/v2 v2.2.1/go.mod h1:E/iiPB78hV7Szg2YfRgyIrk1AD6JVMTRkkxBiELzh2I=
 github.com/stayforlong/go-chassis/v2 v2.244.0 h1:rZ/7rRjJRth8nue6Z5C4brP83iZQLhsfUKI1dSNiKKQ=
 github.com/stayforlong/go-chassis/v2 v2.244.0/go.mod h1:rjhy6uetuwdXLR27W1gCxc/N5GnEA2qCu1D4n8GO2wo=
-github.com/stayforlong/go-chassis/v3 v3.310.1 h1:3mNevv+hvid3kWLe3vVFV0+EzYXV0ZwJDWOCZieguSw=
-github.com/stayforlong/go-chassis/v3 v3.310.1/go.mod h1:JlMShx3R/NW8f+UPOq0Z6mrtlNos6JEtnvcivbaevdA=
+github.com/stayforlong/go-chassis/v3 v3.310.2 h1:LoqmOwMG5twvg8zYP6/rUnsks6kHabBFgrVqTtNzt+M=
+github.com/stayforlong/go-chassis/v3 v3.310.2/go.mod h1:JlMShx3R/NW8f+UPOq0Z6mrtlNos6JEtnvcivbaevdA=
 github.com/stayforlong/httpcache v0.0.0-20240312074927-dd17ed9e2f6b h1:x/22guUD0VeiyU0C/yqF4UH8FCOkUDPfGu4NdDZXjfc=
 github.com/stayforlong/httpcache v0.0.0-20240312074927-dd17ed9e2f6b/go.mod h1:Ur1xK67uBDsaHJsHDrdhbZCt+kH18A8aTKJgcD4MeFs=
 github.com/stayforlong/krakend-auth v1.7.0 h1:g+nRAXYoZiRPXrX4hCjqgd36Dha+kHirUCA3xityfUQ=
@@ -852,8 +850,8 @@ github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240709134059-fe6f058063b4
 github.com/stayforlong/krakend-httpcache/v2 v2.0.4-0.20240709134059-fe6f058063b4/go.mod h1:rNlekFnpmLXDHMlz1Li35VFwd3rQVSJ/E9NOm+9sfr4=
 github.com/stayforlong/krakend-ipfilter v1.1.0 h1:BqtJ0XExvO4NfrhYJglyGFNd02u0tERqKfbUEST43ps=
 github.com/stayforlong/krakend-ipfilter v1.1.0/go.mod h1:hAd7gLAg/5xYeJxf9EyI4bgvuC1vR2vBcYol705c/Tc=
-github.com/stayforlong/krakend-statsd/v2 v2.0.4 h1:l9fEuyGMAcLr0rwQ8QsXgDie9GU4RvE7jpYM331PUEc=
-github.com/stayforlong/krakend-statsd/v2 v2.0.4/go.mod h1:v/+THd/4HRZvN1SIXBaVq9SPhY8hkTR6/7Ec6nSVKYo=
+github.com/stayforlong/krakend-statsd/v2 v2.0.5 h1:Psj+2xuXhVNqnoeyVsypRewbBUbD+JeVMxB5GBQZFVY=
+github.com/stayforlong/krakend-statsd/v2 v2.0.5/go.mod h1:UOB3hsaY2rNzYUFhUwdonWpjikJ3iX59cYvrKM+ZnPk=
 github.com/stbenjam/no-sprintf-host-port v0.1.1 h1:tYugd/yrm1O0dV+ThCbaKZh195Dfm07ysF0U6JQXczc=
 github.com/stbenjam/no-sprintf-host-port v0.1.1/go.mod h1:TLhvtIvONRzdmkFiio4O8LHsN9N74I+PhRquPsxpL0I=
 github.com/stoewer/go-strcase v1.2.0 h1:Z2iHWqGXH00XYgqDmNgQbIBxf3wrNq0F3feEy0ainaU=
