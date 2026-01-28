@@ -176,3 +176,6 @@ clean:
 	rm -rf builder/skel/*
 	rm -f krakend
 	rm -rf vendor/
+
+# stayforlong build
+deploy-build: build
