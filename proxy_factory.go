@@ -2,6 +2,7 @@ package krakend
 
 import (
 	"fmt"
+	"slices"
 
 	cel "github.com/krakend/krakend-cel/v2"
 	jsonschema "github.com/krakend/krakend-jsonschema/v2"
@@ -32,6 +33,9 @@ func NewProxyFactory(logger logging.Logger, backendFactory proxy.BackendFactory,
 
 	return proxy.FactoryFunc(func(cfg *config.EndpointConfig) (proxy.Proxy, error) {
 		logger.Debug(fmt.Sprintf("[ENDPOINT: %s] Building the proxy pipe", cfg.Endpoint))
+		if !slices.Contains(cfg.HeadersToPass, "Content-Type") {
+			cfg.HeadersToPass = append(cfg.HeadersToPass, "Content-Type")
+		}
 		return proxyFactory.New(cfg)
 	})
 }

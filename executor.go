@@ -24,19 +24,9 @@ import (
 	jose "github.com/krakend/krakend-jose/v2"
 	logstash "github.com/krakend/krakend-logstash/v2"
 	metrics "github.com/krakend/krakend-metrics/v2/gin"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/datadog"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/influxdb"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/jaeger"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/ocagent"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/prometheus"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/stackdriver"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/xray"
-	_ "github.com/krakend/krakend-opencensus/v2/exporter/zipkin"
 	kotel "github.com/krakend/krakend-otel"
 	otellura "github.com/krakend/krakend-otel/lura"
 	otelgin "github.com/krakend/krakend-otel/router/gin"
-	pubsub "github.com/krakend/krakend-pubsub/v2"
 	usage "github.com/krakend/krakend-usage/v2"
 	"github.com/luraproject/lura/v2/async"
 	"github.com/luraproject/lura/v2/config"
@@ -47,6 +37,9 @@ import (
 	"github.com/luraproject/lura/v2/sd/dnssrv"
 	serverhttp "github.com/luraproject/lura/v2/transport/http/server"
 	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	auth "github.com/stayforlong/krakend-auth"
+	ddtrace "github.com/stayforlong/krakend-ddtrace/v2"
+	statsdmetrics "github.com/stayforlong/krakend-statsd/v2"
 )
 
 // NewExecutor returns an executor for the cmd package. The executor initalizes the entire gateway by
@@ -104,7 +97,7 @@ type BackendFactory interface {
 
 // HandlerFactory returns a KrakenD router handler factory, ready to be passed to the KrakenD RouterFactory
 type HandlerFactory interface {
-	NewHandlerFactory(logging.Logger, *metrics.Metrics, jose.RejecterFactory) router.HandlerFactory
+	NewHandlerFactory(logging.Logger, *metrics.Metrics, jose.RejecterFactory, auth.Authenticator) router.HandlerFactory
 }
 
 // LoggerFactory returns a KrakenD Logger factory, ready to be passed to the KrakenD RouterFactory
@@ -183,6 +176,7 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 		if metricsAndTracesCloser, ok := e.MetricsAndTracesRegister.(io.Closer); ok {
 			defer metricsAndTracesCloser.Close()
 		}
+		e.registerDatadogTrace(cfg, logger)
 
 		// Initializes the global cache for the JWK clients if enabled in the config
 		if err := jose.SetGlobalCacher(logger, cfg.ExtraConfig); err != nil && err != jose.ErrNoValidatorCfg {
@@ -207,7 +201,12 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 
 		agentPing := make(chan string, len(cfg.AsyncAgents))
 
-		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory)
+		authenticator, err := auth.NewAuthenticator(cfg, logger)
+		if err != nil {
+			logger.Error("[SERVICE: auth]", err.Error())
+		}
+
+		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory, authenticator)
 		handlerF = otelgin.New(handlerF)
 
 		runServerChain := serverhttp.RunServerWithLoggerFactory(logger)
@@ -299,6 +298,16 @@ func (e *ExecutorBuilder) checkCollaborators() {
 	}
 }
 
+func (e *ExecutorBuilder) registerDatadogTrace(cfg config.ServiceConfig, l logging.Logger) {
+	ginMiddleware, err := ddtrace.Register(cfg)
+	if err != nil {
+		l.Warning(err.Error())
+	}
+	if ginMiddleware != nil {
+		e.Middlewares = append(e.Middlewares, ginMiddleware)
+	}
+}
+
 // DefaultRunServerFactory creates the default RunServer by wrapping the injected RunServer
 // with the plugin loader and the CORS module
 type DefaultRunServerFactory struct{}
@@ -387,7 +396,11 @@ type MetricsAndTraces struct {
 
 // Register registers the metrics, influx and opencensus packages as required by the given configuration.
 func (m *MetricsAndTraces) Register(ctx context.Context, cfg config.ServiceConfig, l logging.Logger) *metrics.Metrics {
-	metricCollector := metrics.New(ctx, cfg.ExtraConfig, l)
+	metricCollector, err := statsdmetrics.NewGinMetrics(ctx, cfg.ExtraConfig, l)
+	if err != nil {
+		l.Warning(err.Error())
+		metricCollector = metrics.New(ctx, cfg.ExtraConfig, l)
+	}
 
 	if err := influxdb.New(ctx, cfg.ExtraConfig, metricCollector, l); err != nil {
 		if err != influxdb.ErrNoConfig {
@@ -395,14 +408,6 @@ func (m *MetricsAndTraces) Register(ctx context.Context, cfg config.ServiceConfi
 		}
 	} else {
 		l.Debug("[SERVICE: InfluxDB] Service correctly registered")
-	}
-
-	if err := opencensus.Register(ctx, cfg, append(opencensus.DefaultViews, pubsub.OpenCensusViews...)...); err != nil {
-		if err != opencensus.ErrNoConfig {
-			l.Warning("[SERVICE: OpenCensus]", err.Error())
-		}
-	} else {
-		l.Debug("[SERVICE: OpenCensus] Service correctly registered")
 	}
 
 	if shutdownFn, err := kotel.Register(ctx, l, cfg); err == nil {
