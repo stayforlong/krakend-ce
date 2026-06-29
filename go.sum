@@ -948,6 +948,8 @@ github.com/stayforlong/krakend-ipfilter v1.5.0 h1:0W1tt/IJIcjnW5wqoaeY+a+g78Bay/
 github.com/stayforlong/krakend-ipfilter v1.5.0/go.mod h1:V4WylmNWGG+YOqfp83eSbHBjD+wrVXGFNCBWq+HL6Lw=
 github.com/stayforlong/krakend-mcp-gateway v1.1.0 h1:fLRPPK5GZgsOEWCy9aGs2HAzBrMAZfc/qv4NcbUTKdI=
 github.com/stayforlong/krakend-mcp-gateway v1.1.0/go.mod h1:tYT7qnp4E9J0zpdqM6lNF9bzvg1LFEhdwXoDOj/f518=
+github.com/stayforlong/krakend-mcp-gateway v1.2.0 h1:JBl57frGKzsIDhwypgA+o6I9LBzCcNrE91bTPA5un+w=
+github.com/stayforlong/krakend-mcp-gateway v1.2.0/go.mod h1:tYT7qnp4E9J0zpdqM6lNF9bzvg1LFEhdwXoDOj/f518=
 github.com/stayforlong/krakend-statsd/v2 v2.3.0 h1:4h0t+xeaPrtoQS9LvwXeJ3mf+MK61nER66jJoNr8L2Y=
 github.com/stayforlong/krakend-statsd/v2 v2.3.0/go.mod h1:UXAv4c9+97RWXM+D22IwEZ+dE2oETjAo7d69MeIG2KA=
 github.com/stbenjam/no-sprintf-host-port v0.2.0 h1:i8pxvGrt1+4G0czLr/WnmyH7zbZ8Bg8etvARQ1rpyl4=
