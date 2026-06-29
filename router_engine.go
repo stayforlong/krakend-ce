@@ -2,6 +2,8 @@ package krakend
 
 import (
 	"encoding/json"
+	"fmt"
+	"time"
 
 	"github.com/gin-gonic/gin"
 
@@ -15,8 +17,44 @@ import (
 	"github.com/luraproject/lura/v2/transport/http/server"
 )
 
+// mcpAwareFormatter matches gin's default log format but appends MCP context
+// fields (backend, type, name) when the request was handled by krakend-mcp-gateway.
+// Non-MCP requests produce output identical to gin's default formatter.
+func mcpAwareFormatter(param gin.LogFormatterParams) string {
+	var statusColor, methodColor, resetColor string
+	if param.IsOutputColor() {
+		statusColor = param.StatusCodeColor()
+		methodColor = param.MethodColor()
+		resetColor = param.ResetColor()
+	}
+
+	if param.Latency > time.Minute {
+		param.Latency = param.Latency.Truncate(time.Second)
+	}
+
+	line := fmt.Sprintf("[GIN] %v |%s %3d %s| %13v | %15s |%s %-7s %s %#v",
+		param.TimeStamp.Format("2006/01/02 - 15:04:05"),
+		statusColor, param.StatusCode, resetColor,
+		param.Latency,
+		param.ClientIP,
+		methodColor, param.Method, resetColor,
+		param.Path,
+	)
+
+	if backend, ok := param.Keys["mcp_backend"].(string); ok && backend != "" {
+		mcpType, _ := param.Keys["mcp_type"].(string)
+		name, _ := param.Keys["mcp_name"].(string)
+		line += fmt.Sprintf(" | %s | %s | %s", backend, mcpType, name)
+	}
+
+	return line + "\n" + param.ErrorMessage
+}
+
 // NewEngine creates a new gin engine with some default values and a secure middleware
 func NewEngine(cfg config.ServiceConfig, opt luragin.EngineOptions) *gin.Engine {
+	if opt.Formatter == nil {
+		opt.Formatter = mcpAwareFormatter
+	}
 	engine := luragin.NewEngine(cfg, opt)
 
 	engine.NoRoute(opencensus.HandlerFunc(&config.EndpointConfig{Endpoint: "NoRoute"}, defaultHandler, nil))
