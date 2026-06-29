@@ -40,7 +40,7 @@ require (
 	github.com/stayforlong/krakend-auth v1.11.0
 	github.com/stayforlong/krakend-ddtrace/v2 v2.4.0
 	github.com/stayforlong/krakend-ipfilter v1.5.0
-	github.com/stayforlong/krakend-mcp-gateway v1.2.0
+	github.com/stayforlong/krakend-mcp-gateway v1.3.0
 	github.com/stayforlong/krakend-statsd/v2 v2.3.0
 	github.com/xeipuuv/gojsonschema v1.2.1-0.20200424115421-065759f9c3d7
 	golang.org/x/sync v0.19.0
