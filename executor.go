@@ -39,6 +39,7 @@ import (
 	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
 	auth "github.com/stayforlong/krakend-auth"
 	ddtrace "github.com/stayforlong/krakend-ddtrace/v2"
+	mcpgateway "github.com/stayforlong/krakend-mcp-gateway"
 	statsdmetrics "github.com/stayforlong/krakend-statsd/v2"
 )
 
@@ -206,8 +207,14 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 			logger.Error("[SERVICE: auth]", err.Error())
 		}
 
+		mcpGateway, err := mcpgateway.NewMCPGateway(ctx, cfg, logger)
+		if err != nil {
+			logger.Error("[SERVICE: mcp-gateway]", err.Error())
+		}
+
 		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory, authenticator)
 		handlerF = otelgin.New(handlerF)
+		handlerF = router.HandlerFactory(mcpGateway.NewHandlerFactory(mcpgateway.HandlerFactory(handlerF), logger))
 
 		runServerChain := serverhttp.RunServerWithLoggerFactory(logger)
 		runServerChain = otellura.GlobalRunServer(logger, runServerChain)
