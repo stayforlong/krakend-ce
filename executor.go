@@ -207,9 +207,21 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 			logger.Error("[SERVICE: auth]", err.Error())
 		}
 
-		mcpGateway, err := mcpgateway.NewMCPGateway(ctx, cfg, logger)
+		var mcpRecorder mcpgateway.MetricsWriter
+		if statsDcfgRaw, cfgErr := statsdmetrics.ConfigGetter(cfg.ExtraConfig); cfgErr == nil {
+			statsDcfg := statsDcfgRaw.(statsdmetrics.StatsDConfig)
+			if r, recErr := statsdmetrics.NewMCPRecorder(statsDcfg); recErr == nil {
+				mcpRecorder = r
+				defer r.Close()
+			} else {
+				logger.Warning("[SERVICE: mcp-gateway] failed to create metrics recorder:", recErr.Error())
+			}
+		}
+
+		mcpGateway, err := mcpgateway.NewMCPGateway(ctx, cfg, logger, mcpRecorder)
 		if err != nil {
 			logger.Error("[SERVICE: mcp-gateway]", err.Error())
+			return
 		}
 
 		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory, authenticator)
