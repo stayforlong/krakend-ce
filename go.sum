@@ -938,8 +938,8 @@ github.com/stayforlong/go-chassis/v3 v3.358.0 h1:sb74PE2LYh5cVjj9S7xyuZW/2SNmxia
 github.com/stayforlong/go-chassis/v3 v3.358.0/go.mod h1:gB1Z6RkvpQlIizYyJjGdejNYqfinw4eSCU9x8ITzjQo=
 github.com/stayforlong/httpcache v0.0.0-20260129090018-1f3d9d6e389d h1:ATDX4qYwST58bKr257Du/H5bLSIZXqmI17WN8XV6v8k=
 github.com/stayforlong/httpcache v0.0.0-20260129090018-1f3d9d6e389d/go.mod h1:ajzyWdMJQdNGZEMmao1sXjvSQ9KLpSDfmcMDZwSVz/s=
-github.com/stayforlong/krakend-auth v1.11.0 h1:u7m1VqsCuziBUQYDgthr0Ap6MOv3F8kI6lwvV/KuMDQ=
-github.com/stayforlong/krakend-auth v1.11.0/go.mod h1:cwkF6UFOT/33FvmKSFVcCFyDdlMr4KI5kwdpVAhRq0A=
+github.com/stayforlong/krakend-auth v1.15.0 h1:c2HzSCnwjv6cdFRY4ozV3OuiZVnGXW8RKQ/yOXFR6UY=
+github.com/stayforlong/krakend-auth v1.15.0/go.mod h1:tU9HPNhWlDXUuA5Tw1cIssHJ202vHlUMWo6lAvdu0G4=
 github.com/stayforlong/krakend-ddtrace/v2 v2.4.0 h1:BgMvdZaQ6q8wQcEAzEhxHoeI7Xxs/RcWMqYXVC/l61g=
 github.com/stayforlong/krakend-ddtrace/v2 v2.4.0/go.mod h1:5PdbsbSVe4os2yqVAWqYIHrgByP2NTnzaPcgsl2cT/4=
 github.com/stayforlong/krakend-httpcache/v2 v2.1.0 h1:Yyqoy2CuYszaSLHR0YmxwAr946yMc+VSri6I8ipPdN0=
