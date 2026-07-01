@@ -946,8 +946,8 @@ github.com/stayforlong/krakend-httpcache/v2 v2.1.0 h1:Yyqoy2CuYszaSLHR0YmxwAr946
 github.com/stayforlong/krakend-httpcache/v2 v2.1.0/go.mod h1:ig83MbU49khrFApI8H8uNtGeI6Qa8FvaDMKqZ0z9Aaw=
 github.com/stayforlong/krakend-ipfilter v1.5.0 h1:0W1tt/IJIcjnW5wqoaeY+a+g78Bay/bDzCZwnN+O7Og=
 github.com/stayforlong/krakend-ipfilter v1.5.0/go.mod h1:V4WylmNWGG+YOqfp83eSbHBjD+wrVXGFNCBWq+HL6Lw=
-github.com/stayforlong/krakend-mcp-gateway v1.6.0 h1:gkbfDDbErcrIr7SXjx8RaDWc2qzYrLVrMNP7pK4CJew=
-github.com/stayforlong/krakend-mcp-gateway v1.6.0/go.mod h1:tYT7qnp4E9J0zpdqM6lNF9bzvg1LFEhdwXoDOj/f518=
+github.com/stayforlong/krakend-mcp-gateway v1.7.0 h1:QFjKTJMH3WPM0/0VIOgxkZT5zoc4pPc5Tn1Ikzo8Th4=
+github.com/stayforlong/krakend-mcp-gateway v1.7.0/go.mod h1:tYT7qnp4E9J0zpdqM6lNF9bzvg1LFEhdwXoDOj/f518=
 github.com/stayforlong/krakend-statsd/v2 v2.8.0 h1:GOmbaqeaTHrBsD2RrpIbDDiPLqxVsGiXjANiR0uYFxY=
 github.com/stayforlong/krakend-statsd/v2 v2.8.0/go.mod h1:UXAv4c9+97RWXM+D22IwEZ+dE2oETjAo7d69MeIG2KA=
 github.com/stbenjam/no-sprintf-host-port v0.2.0 h1:i8pxvGrt1+4G0czLr/WnmyH7zbZ8Bg8etvARQ1rpyl4=
