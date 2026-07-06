@@ -37,7 +37,7 @@ require (
 	github.com/krakend/krakend-xml/v2 v2.2.0
 	github.com/luraproject/lura/v2 v2.12.1
 	github.com/spf13/cobra v1.9.1
-	github.com/stayforlong/krakend-auth v1.16.0
+	github.com/stayforlong/krakend-auth v1.17.0
 	github.com/stayforlong/krakend-ddtrace/v2 v2.4.0
 	github.com/stayforlong/krakend-ipfilter v1.5.0
 	github.com/stayforlong/krakend-mcp-gateway v1.8.0
