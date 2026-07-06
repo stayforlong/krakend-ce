@@ -16,11 +16,24 @@ import (
 	router "github.com/luraproject/lura/v2/router/gin"
 	auth "github.com/stayforlong/krakend-auth"
 	ipfilter "github.com/stayforlong/krakend-ipfilter"
+	mcpgateway "github.com/stayforlong/krakend-mcp-gateway"
 )
 
-// NewHandlerFactory returns a HandlerFactory with a rate-limit and a metrics collector middleware injected
-func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, rejecter jose.RejecterFactory, a auth.Authenticator) router.HandlerFactory {
+// NewHandlerFactory returns a HandlerFactory with a rate-limit and a metrics collector middleware injected.
+//
+// mcpGateway is deliberately wrapped around the innermost base handler, before
+// every other middleware (rate-limit, lua, jose, auth, ipfilter, metrics,
+// bot-detector) is layered on top. krakend-mcp-gateway's own HandlerFactory
+// fully replaces an endpoint's handler — and never calls its wrapped hf —
+// whenever the endpoint carries MCP gateway config, which every real MCP
+// endpoint does. Wrapping it around the *whole* chain (as this used to do,
+// from the executor) meant that chain, auth included, was silently never
+// invoked for any MCP endpoint. Placing it innermost instead means every
+// other middleware still runs first, and only the final base-handler step
+// is replaced for MCP-gateway-namespaced endpoints.
+func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, rejecter jose.RejecterFactory, a auth.Authenticator, mcpGateway mcpgateway.MCPGateway) router.HandlerFactory {
 	handlerFactory := router.CustomErrorEndpointHandler(logger, ErrorToHTTPError)
+	handlerFactory = router.HandlerFactory(mcpGateway.NewHandlerFactory(mcpgateway.HandlerFactory(handlerFactory), logger))
 	handlerFactory = ratelimit.NewRateLimiterMw(logger, handlerFactory)
 	handlerFactory = lua.HandlerFactory(logger, handlerFactory)
 	handlerFactory = ginjose.HandlerFactory(handlerFactory, logger, rejecter)
@@ -37,6 +50,6 @@ func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, 
 
 type handlerFactory struct{}
 
-func (handlerFactory) NewHandlerFactory(l logging.Logger, m *metrics.Metrics, r jose.RejecterFactory, a auth.Authenticator) router.HandlerFactory {
-	return NewHandlerFactory(l, m, r, a)
+func (handlerFactory) NewHandlerFactory(l logging.Logger, m *metrics.Metrics, r jose.RejecterFactory, a auth.Authenticator, mcpGateway mcpgateway.MCPGateway) router.HandlerFactory {
+	return NewHandlerFactory(l, m, r, a, mcpGateway)
 }

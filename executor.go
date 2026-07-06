@@ -98,7 +98,7 @@ type BackendFactory interface {
 
 // HandlerFactory returns a KrakenD router handler factory, ready to be passed to the KrakenD RouterFactory
 type HandlerFactory interface {
-	NewHandlerFactory(logging.Logger, *metrics.Metrics, jose.RejecterFactory, auth.Authenticator) router.HandlerFactory
+	NewHandlerFactory(logging.Logger, *metrics.Metrics, jose.RejecterFactory, auth.Authenticator, mcpgateway.MCPGateway) router.HandlerFactory
 }
 
 // LoggerFactory returns a KrakenD Logger factory, ready to be passed to the KrakenD RouterFactory
@@ -224,9 +224,8 @@ func (e *ExecutorBuilder) NewCmdExecutor(ctx context.Context) cmd.Executor {
 			return
 		}
 
-		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory, authenticator)
+		handlerF := e.HandlerFactory.NewHandlerFactory(logger, metricCollector, tokenRejecterFactory, authenticator, mcpGateway)
 		handlerF = otelgin.New(handlerF)
-		handlerF = router.HandlerFactory(mcpGateway.NewHandlerFactory(mcpgateway.HandlerFactory(handlerF), logger))
 
 		runServerChain := serverhttp.RunServerWithLoggerFactory(logger)
 		runServerChain = otellura.GlobalRunServer(logger, runServerChain)
